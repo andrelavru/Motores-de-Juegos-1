@@ -8,7 +8,6 @@ public class enemyEnable : MonoBehaviour {
     //private Vector3 endPoint = new Vector3(2.0f, 0.0f, 0.0f);
     public GameObject initObject;
     public GameObject secObject;
-    public GameObject terObject;
     public GameObject endObject;
     private float t = 0.0f;
     public float dt = 0.02f;
@@ -19,7 +18,6 @@ public class enemyEnable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Ida
         if(count == 0)
         {
             transform.position = Vector3.Lerp(initObject.transform.position, secObject.transform.position, t);
@@ -28,30 +26,17 @@ public class enemyEnable : MonoBehaviour {
                 
         if (count == 1)
         {
-            transform.position = Vector3.Lerp(secObject.transform.position, terObject.transform.position, t);
+            transform.position = Vector3.Lerp(secObject.transform.position, endObject.transform.position, t);
             t += dt;
         }
 
         if (count == 2)
         {
-            transform.position = Vector3.Lerp(terObject.transform.position, endObject.transform.position, t);
+            transform.position = Vector3.Lerp(endObject.transform.position, secObject.transform.position, t);
             t += dt;
         }
 
-        //vuelta
-        if (count == 3)
-        {
-            transform.position = Vector3.Lerp(endObject.transform.position, terObject.transform.position, t);
-            t += dt;
-        }
-
-        if (count == 4)
-        {
-            transform.position = Vector3.Lerp(terObject.transform.position, secObject.transform.position, t);
-            t += dt;
-        }
-
-        if (count == 5)
+        if(count == 3)
         {
             transform.position = Vector3.Lerp(secObject.transform.position, initObject.transform.position, t);
             t += dt;
@@ -60,13 +45,9 @@ public class enemyEnable : MonoBehaviour {
         if (t > 1)
         {
             t = 0;
-            count += 1;
+            count = 1;
         }
 
-        if (count > 5)
-        {
-            count = 0;
-        }
 
 
     }
